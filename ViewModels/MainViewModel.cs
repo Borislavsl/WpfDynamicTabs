@@ -1,18 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Windows;
+using Models;
 
 namespace DynamicTabs.ViewModels
-{
-    public class TabItemDetail
-    {
-        public string Header { get; set; }
-        public string Content { get; set; }
-    }
-
+{    
     public class MainViewModel : INotifyPropertyChanged
     {
+        private readonly IDataProvider<TabItem> tabItemsProvider;
+
         public List<string> ListItems { get; }
 
         private string _selectedListItem;
@@ -32,10 +28,13 @@ namespace DynamicTabs.ViewModels
             }
         }
 
-        public ObservableCollection<TabItemDetail> TabItems { get; }
+        public ObservableCollection<TabItemDetail> TabItems { get; set; }
 
-        public MainViewModel()
+        public MainViewModel(IDataProvider<TabItem> provider)
         {
+            tabItemsProvider = provider;
+            tabItemsProvider.Initialize();
+
             TabItems = new ObservableCollection<TabItemDetail>();
             ListItems = GetListItems();
             SelectedListItem = ListItems[0];
@@ -51,19 +50,15 @@ namespace DynamicTabs.ViewModels
         private void AddItemsToTab(string selectedItem)
         {
             TabItems.Clear();
-            TabItems.Add(new TabItemDetail { Header = selectedItem + 1, Content = "The tab1  is selected" });        
-            TabItems.Add(new TabItemDetail { Header = selectedItem + 2, Content = "The tab2  is selected" });        
-            TabItems.Add(new TabItemDetail { Header = selectedItem + 3, Content = "The tab3  is selected" });        
+
+            var tabItems = tabItemsProvider.GetTabItems(selectedItem);
+            foreach (TabItem item in tabItems)            
+                TabItems.Add(new TabItemDetail(item));            
         }
 
         private List<string> GetListItems()
         {
-            var source = new List<string>();
-
-            source.Add("Default tab");
-            source.Add("Voltage Tab");
-
-            return source;
+            return tabItemsProvider.GetListItems() as List<string>;
         }        
     }
 }

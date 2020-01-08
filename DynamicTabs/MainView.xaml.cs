@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using DynamicTabs.ViewModels;
+using Models;
 
 namespace DynamicTabs
 {    
@@ -8,6 +9,8 @@ namespace DynamicTabs
         public MainView()
         {
             InitializeComponent();
+
+            DataContext = new MainViewModel(new ItemsProvider());
         }
     }
 }

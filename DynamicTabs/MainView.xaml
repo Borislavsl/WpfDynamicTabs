@@ -5,11 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"        
         xmlns:viewModels="clr-namespace:DynamicTabs.ViewModels;assembly=ViewModels"
         mc:Ignorable="d"
-        Title="DynamicTabs" Height="350" Width="625">
-
-    <Window.DataContext>
-        <viewModels:MainViewModel/>
-    </Window.DataContext>
+        Title="DynamicTabs" Height="350" Width="625">    
 
     <Window.Resources>
         <DataTemplate DataType="{x:Type viewModels:TabItemDetail}" x:Key="tabContent">
