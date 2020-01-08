@@ -1,0 +1,43 @@
+﻿<Window x:Class="DynamicTabs.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"        
+        xmlns:viewModels="clr-namespace:DynamicTabs.ViewModels;assembly=ViewModels"
+        mc:Ignorable="d"
+        Title="DynamicTabs" Height="350" Width="625">
+
+    <Window.DataContext>
+        <viewModels:MainViewModel/>
+    </Window.DataContext>
+
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type viewModels:TabItemDetail}" x:Key="tabContent">
+            <StackPanel VerticalAlignment="Top">
+                <TextBlock Margin="4">
+                    <Run Text="{Binding Content}" FontSize="16"></Run>
+                </TextBlock>
+            </StackPanel>
+        </DataTemplate>
+    </Window.Resources>
+
+    <Viewbox>
+        <StackPanel Orientation="Horizontal" Background ="LightGray" Margin="5"  Height="250" Width="550">
+
+            <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5">
+                <ListBox  Grid.Column="0" ItemsSource="{Binding ListItems}" SelectedItem="{Binding SelectedListItem}" IsSynchronizedWithCurrentItem="True" />
+            </StackPanel>
+
+            <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Margin="4">
+                <TabControl VerticalAlignment="Top"  HorizontalAlignment="Center" ItemsSource="{Binding TabItems}" ContentTemplate="{DynamicResource tabContent}" IsSynchronizedWithCurrentItem="True">
+                    <TabControl.ItemContainerStyle>
+                        <Style TargetType="TabItem">
+                            <Setter Property="Header" Value="{Binding Header}"/>
+                        </Style>
+                    </TabControl.ItemContainerStyle>
+                </TabControl>
+            </StackPanel>
+
+        </StackPanel>
+    </Viewbox>
+</Window>

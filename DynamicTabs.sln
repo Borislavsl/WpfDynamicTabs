@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.960
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicTabs", "DynamicTabs\DynamicTabs.csproj", "{AC25AB6C-E35A-45C0-8C41-3D6EE821B0B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{CCDEEDB9-FCBD-4142-A305-17871E602626}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewModels", "ViewModels\ViewModels.csproj", "{EC72A27D-D794-49A0-A28F-4B1DE035CA34}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AC25AB6C-E35A-45C0-8C41-3D6EE821B0B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC25AB6C-E35A-45C0-8C41-3D6EE821B0B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC25AB6C-E35A-45C0-8C41-3D6EE821B0B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC25AB6C-E35A-45C0-8C41-3D6EE821B0B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCDEEDB9-FCBD-4142-A305-17871E602626}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCDEEDB9-FCBD-4142-A305-17871E602626}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCDEEDB9-FCBD-4142-A305-17871E602626}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCDEEDB9-FCBD-4142-A305-17871E602626}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC72A27D-D794-49A0-A28F-4B1DE035CA34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC72A27D-D794-49A0-A28F-4B1DE035CA34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC72A27D-D794-49A0-A28F-4B1DE035CA34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC72A27D-D794-49A0-A28F-4B1DE035CA34}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {38C9CAA0-3A0B-4949-B0D4-FC686FEF0BF7}
+	EndGlobalSection
+EndGlobal
