@@ -7,20 +7,20 @@ namespace DynamicTabs.ViewModels
 {    
     public class MainViewModel : INotifyPropertyChanged
     {
-        private readonly IDataProvider<TabItem> tabItemsProvider;
+        private readonly ITabsDataProvider<TabItem> tabItemsProvider;
 
-        public List<string> ListItems { get; }
+        public List<string> ListItems { get; set; }
 
-        private string _selectedListItem;
+        private string selectedListItem;
         public string SelectedListItem
         {
-            get { return _selectedListItem; }
+            get { return selectedListItem; }
             set
             {
-                if (_selectedListItem == value)
+                if (selectedListItem == value)
                     return;
 
-                _selectedListItem = value;
+                selectedListItem = value;
 
                 AddItemsToTab(value);
 
@@ -30,7 +30,9 @@ namespace DynamicTabs.ViewModels
 
         public ObservableCollection<TabItemDetail> TabItems { get; set; }
 
-        public MainViewModel(IDataProvider<TabItem> provider)
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public MainViewModel(ITabsDataProvider<TabItem> provider)
         {
             tabItemsProvider = provider;
             tabItemsProvider.Initialize();
@@ -38,13 +40,6 @@ namespace DynamicTabs.ViewModels
             TabItems = new ObservableCollection<TabItemDetail>();
             ListItems = GetListItems();
             SelectedListItem = ListItems[0];
-        }       
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }      
 
         private void AddItemsToTab(string selectedItem)
@@ -54,6 +49,11 @@ namespace DynamicTabs.ViewModels
             var tabItems = tabItemsProvider.GetTabItems(selectedItem);
             foreach (TabItem item in tabItems)            
                 TabItems.Add(new TabItemDetail(item));            
+        }
+
+        private void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         private List<string> GetListItems()

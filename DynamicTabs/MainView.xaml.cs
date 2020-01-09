@@ -10,7 +10,7 @@ namespace DynamicTabs
         {
             InitializeComponent();
 
-            DataContext = new MainViewModel(new ItemsProvider());
+            DataContext = new MainViewModel(new TabItemsProvider());
         }
     }
 }

@@ -21,7 +21,7 @@
         <StackPanel Orientation="Horizontal" Background ="LightGray" Margin="5"  Height="250" Width="550">
 
             <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5">
-                <ListBox  Grid.Column="0" ItemsSource="{Binding ListItems}" SelectedItem="{Binding SelectedListItem}" IsSynchronizedWithCurrentItem="True" />
+                <ListBox ItemsSource="{Binding ListItems}" SelectedItem="{Binding SelectedListItem}" IsSynchronizedWithCurrentItem="True" />
             </StackPanel>
 
             <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Margin="4">

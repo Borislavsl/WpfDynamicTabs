@@ -2,7 +2,7 @@
 
 namespace Models
 {
-    public interface IDataProvider<T>
+    public interface ITabsDataProvider<T>
     {
         IEnumerable<T> GetTabItems(string tabKey);
         IEnumerable<string> GetListItems();
